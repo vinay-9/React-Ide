@@ -4,7 +4,7 @@ const app = express();
   
 // Assign route
 app.use('/', (req, res, next) => {
-  res.send('Node.js Search and Filter');
+  console.log('Node.js Search and Filter');
 });
   
 // Start server on PORT 5000
