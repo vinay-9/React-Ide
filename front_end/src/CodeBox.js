@@ -58,6 +58,9 @@ return 0;
     }
 
     const executeCode = async ()=>{
+        await axios.get('/').then(response=>{
+            console.log(response);
+        })
         var options = {
                 method: 'POST',
                 url: 'https://judge0-ce.p.rapidapi.com/submissions',
@@ -69,11 +72,12 @@ return 0;
                 },
                 data:JSON.stringify({
                     // language_id:mode,
+                    // source_code: 'I2luY2x1ZGUgPHN0ZGlvLmg+CgppbnQgbWFpbih2b2lkKSB7CiAgY2hhciBuYW1lWzEwXTsKICBzY2FuZigiJXMiLCBuYW1lKTsKICBwcmludGYoImhlbGxvLCAlc1xuIiwgbmFtZSk7CiAgcmV0dXJuIDA7Cn0=',
+                    // stdin: 'SnVkZ2Uw'
                     source_code: code,
                     stdin:input,
                     language_id: mode,
-    // source_code: 'I2luY2x1ZGUgPHN0ZGlvLmg+CgppbnQgbWFpbih2b2lkKSB7CiAgY2hhciBuYW1lWzEwXTsKICBzY2FuZigiJXMiLCBuYW1lKTsKICBwcmludGYoImhlbGxvLCAlc1xuIiwgbmFtZSk7CiAgcmV0dXJuIDA7Cn0=',
-    // stdin: 'SnVkZ2Uw'
+   
                   }),
         
         };
