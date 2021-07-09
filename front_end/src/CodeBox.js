@@ -59,7 +59,7 @@ return 0;
 
     const executeCode = async ()=>{
         await axios.get('/').then(response=>{
-            console.log(response);
+            console.log("from backcend",response.data);
         })
         var options = {
                 method: 'POST',
@@ -92,16 +92,17 @@ return 0;
             console.log("error from submission")
             console.error(error);
         });
+// 'x-rapidapi-key': 'bd7cf329bemshae8e6053840605ep166442jsnc60488059d95',
 
-        var getoptions = {
-            method: 'GET',
-            url: `https://judge0-extra-ce.p.rapidapi.com/submissions/${token}`,
-            params: {base64_encoded: 'true', fields: '*'},
-            headers: {
-                // 'x-rapidapi-key': 'bd7cf329bemshae8e6053840605ep166442jsnc60488059d95',
+
+            var getoptions = {
+                method: 'GET',
+                url: `https://judge0-ce.p.rapidapi.com/submissions/${token}`,
+                params: {base64_encoded: 'true', fields: '*'},
+                headers: {
                 'x-rapidapi-key': '098ff97f16mshec4444d56e91a23p14d2edjsn79769e2abfde',
-                'x-rapidapi-host': 'judge0-extra-ce.p.rapidapi.com'
-            }
+                'x-rapidapi-host': 'judge0-ce.p.rapidapi.com'
+                }
             };
 
             await axios.request(getoptions).then(function (response) {
