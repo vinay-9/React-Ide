@@ -1,8 +1,9 @@
 import "codemirror/lib/codemirror.css";
 import React, { useState, useEffect, ReactDOM } from 'react';
-import CodeMirror from '@uiw/react-codemirror';
+// import CodeMirror from '@uiw/react-codemirror';
 import { Form, TextArea } from 'semantic-ui-react'
 import {Controlled as ControlledEditor} from 'react-codemirror2'
+import {UnControlled as CodeMirror} from 'react-codemirror2'
 import { TextField } from '@material-ui/core';
 import 'codemirror/addon/display/autorefresh';
 import 'codemirror/addon/comment/comment';
@@ -21,7 +22,6 @@ function CodeBox() {
         int main() {
         cout << "Hello World!";
         return 0;
-        }
         }`);
     // 54= C++, 62=Java
     const [mode, setmode] = useState(54)
@@ -42,7 +42,6 @@ using namespace std;
 int main() {
 cout << "Hello World!";
 return 0;
-}
 }`)
             :setcode(`public class Main {
                     public static void main(String[] args) {
@@ -58,9 +57,9 @@ return 0;
     }
 
     const executeCode = async ()=>{
-        await axios.get('/').then(response=>{
-            console.log("from backcend",response.data);
-        })
+        // await axios.get('/').then(response=>{
+        //     console.log("from backcend",response.data);
+        // })
         var options = {
                 method: 'POST',
                 url: 'https://judge0-ce.p.rapidapi.com/submissions',
@@ -125,7 +124,7 @@ return 0;
                 <select className="select" 
                 name="select" 
                 onChange={(e)=>{
-                    e.target.value==="C++"? setmode(2) : setmode(4)
+                    e.target.value==="C++"? setmode(54) : setmode(62)
                     console.log(mode);
                     e.preventDefault()
                 }}>
@@ -133,8 +132,8 @@ return 0;
                     <option value="Java"> Java</option>
                 </select>
 
-             <ControlledEditor
-                onBeforeChange={handleChange}
+             <CodeMirror
+                // onBeforeChange={handleChange}
                 onChange={handleChange}
                 value= {code}
                 className= "code-mirror-wrapper"
@@ -147,7 +146,7 @@ return 0;
                     mode: mode===54? "C++": "Java",
                     lineNumbers: true
                 }}
-                ></ControlledEditor>
+                ></CodeMirror>
 
                 <button onClick={()=>{
                     executeCode();
@@ -179,7 +178,6 @@ return 0;
                 </iframe>
             </div>  
         </div>
-
         </>
     )
 }
