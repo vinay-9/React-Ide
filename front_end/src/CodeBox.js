@@ -35,8 +35,7 @@ function CodeBox() {
    
     useEffect(() => {
         mode===54? 
-            setcode(`
-#include <iostream>
+            setcode(`#include <iostream>
 using namespace std;
 
 int main() {
@@ -148,11 +147,10 @@ return 0;
                 }}
                 ></CodeMirror>
 
-                <button onClick={()=>{
+                <button 
+                onClick={()=>{
                     executeCode();
                 }}> Submit </button>
-
-
 
                 <h3> Input </h3>
                 <TextArea  
