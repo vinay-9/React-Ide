@@ -65,7 +65,7 @@ return 0;
                 params: {base64_encoded: 'true', wait: 'true', fields: '*'},
                 headers: {
                   'content-type': 'application/json',
-                  'x-rapidapi-key': '098ff97f16mshec4444d56e91a23p14d2edjsn79769e2abfde',
+                  'x-rapidapi-key': '--enter your own key',
                   'x-rapidapi-host': 'judge0-ce.p.rapidapi.com'
                 },
                 data:JSON.stringify({
@@ -90,7 +90,6 @@ return 0;
             console.log("error from submission")
             console.error(error);
         });
-// 'x-rapidapi-key': 'bd7cf329bemshae8e6053840605ep166442jsnc60488059d95',
 
 
             var getoptions = {
@@ -98,7 +97,7 @@ return 0;
                 url: `https://judge0-ce.p.rapidapi.com/submissions/${token}`,
                 params: {base64_encoded: 'true', fields: '*'},
                 headers: {
-                'x-rapidapi-key': '098ff97f16mshec4444d56e91a23p14d2edjsn79769e2abfde',
+                'x-rapidapi-key': '--- enter your own key ',
                 'x-rapidapi-host': 'judge0-ce.p.rapidapi.com'
                 }
             };
