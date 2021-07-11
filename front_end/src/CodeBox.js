@@ -11,6 +11,7 @@ import 'codemirror/addon/edit/matchbrackets';
 import 'codemirror/keymap/sublime';
 import 'codemirror/theme/monokai.css';
 import 'codemirror/theme/dracula.css';
+import back from './background.png'
 require('codemirror/mode/javascript/javascript');
 const axios= require('axios');
 
@@ -116,6 +117,7 @@ return 0;
 
     return (
         <>
+        <img src={back}/>
         <h1 align="center"> Welcome to CodeBox💻</h1>
         <div className= "container">
             <div className="navbar">
