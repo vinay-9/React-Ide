@@ -66,7 +66,7 @@ return 0;
                 params: {base64_encoded: 'true', wait: 'true', fields: '*'},
                 headers: {
                   'content-type': 'application/json',
-                  'x-rapidapi-key': '--enter your own key',
+                  'x-rapidapi-key': '098ff97f16mshec4444d56e91a23p14d2edjsn79769e2abfde',
                   'x-rapidapi-host': 'judge0-ce.p.rapidapi.com'
                 },
                 data:JSON.stringify({
@@ -98,8 +98,8 @@ return 0;
                 url: `https://judge0-ce.p.rapidapi.com/submissions/${token}`,
                 params: {base64_encoded: 'true', fields: '*'},
                 headers: {
-                'x-rapidapi-key': '--- enter your own key ',
-                'x-rapidapi-host': 'judge0-ce.p.rapidapi.com'
+                    'x-rapidapi-key': '098ff97f16mshec4444d56e91a23p14d2edjsn79769e2abfde',
+                    'x-rapidapi-host': 'judge0-ce.p.rapidapi.com'
                 }
             };
 
