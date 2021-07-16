@@ -75,5 +75,6 @@ iframe{
     border: 1px;
     border-style: dashed;
     background-color: rgba(127, 255, 212, 0);
+    max-width: 100%;
 }
 
