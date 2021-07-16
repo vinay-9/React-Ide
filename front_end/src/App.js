@@ -3,7 +3,6 @@ import './App.css';
 import {BrowserRouter  as Router, Route, Switch} from 'react-router-dom';
 import grey from '@material-ui/core/colors/grey';
 import Input from '@material-ui/core/Input';
-import Collapsible from 'react-collapsible';
 import Button from '@material-ui/core/Button'
 import SearchIcon from '@material-ui/icons/Search';
 import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownOutlined';

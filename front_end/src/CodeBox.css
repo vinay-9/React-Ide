@@ -54,8 +54,10 @@ button{
     border-color:black;
     border-radius: 3px;
     font-size: large;
+    display: flex;
     margin-top: 2px;
     width: 10%;
+
 }
 
 

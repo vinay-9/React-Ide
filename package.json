@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "0.12.x",
+    "npm": "2.5.x"
+  },
   "dependencies": {
     "@editorjs/editorjs": "^2.22.1",
     "@material-ui/core": "^4.11.4",
@@ -27,12 +31,16 @@
     "semantic-ui-react": "^2.0.3",
     "webpack": "^4.44.2"
   },
+  "proxy": "http://localhost:3000",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.js",
     "client": "npm start --prefix front_end",
+    "build": "concurrently \"npm run server\" \"npm run client\"",
+    "build-localhost": "PUBLIC_URL=/ react-scripts build",
     "dev": "concurrently \"npm run server\" \"npm run client\""
+
   },
   "keywords": [],
   "author": "",

@@ -53,17 +53,20 @@ return 0;
 
     const handleChange=(editor, data, value)=>{
         setcode(value)
+        // console.log(code)
+    }
+    const onBeforeChange=(editor, data, value)=>{
         console.log(code)
     }
 
-    const executeCode = async ()=>{
+    const executeCode =  ()=>{
         // await axios.get('/').then(response=>{
         //     console.log("from backcend",response.data);
         // })
         var options = {
                 method: 'POST',
                 url: 'https://judge0-ce.p.rapidapi.com/submissions',
-                params: {base64_encoded: 'true', wait: 'true', fields: '*'},
+                params: {base64_encoded: 'false', wait: 'true', fields: '*'},
                 headers: {
                   'content-type': 'application/json',
                   'x-rapidapi-key': '098ff97f16mshec4444d56e91a23p14d2edjsn79769e2abfde',
@@ -82,7 +85,7 @@ return 0;
         };
         
 
-        await axios.request(options).then(function (response) {
+        axios.request(options).then(function (response) {
             console.log(response.data.token);
             settoken(response.data.token)
             setmode(response.data.language_id)
@@ -96,14 +99,14 @@ return 0;
             var getoptions = {
                 method: 'GET',
                 url: `https://judge0-ce.p.rapidapi.com/submissions/${token}`,
-                params: {base64_encoded: 'true', fields: '*'},
+                params: {base64_encoded: 'false', fields: '*'},
                 headers: {
                     'x-rapidapi-key': '098ff97f16mshec4444d56e91a23p14d2edjsn79769e2abfde',
                     'x-rapidapi-host': 'judge0-ce.p.rapidapi.com'
                 }
             };
 
-            await axios.request(getoptions).then(function (response) {
+             axios.request(getoptions).then(function (response) {
                 console.log(response.data," from the url ", getoptions.url)
                 response.data.status.description=== "Accepted"?
                 setresult(response.data.stdout):
@@ -133,7 +136,7 @@ return 0;
                 </select>
 
              <CodeMirror
-                // onBeforeChange={handleChange}
+                onBeforeChange={onBeforeChange}
                 onChange={handleChange}
                 value= {code}
                 className= "code-mirror-wrapper"
