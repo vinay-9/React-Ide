@@ -53,11 +53,9 @@ return 0;
 
     const handleChange=(editor, data, value)=>{
         setcode(value)
-        // console.log(code)
-    }
-    const onBeforeChange=(editor, data, value)=>{
         console.log(code)
     }
+    
 
     const executeCode =  ()=>{
         // await axios.get('/').then(response=>{
@@ -136,7 +134,7 @@ return 0;
                 </select>
 
              <CodeMirror
-                onBeforeChange={onBeforeChange}
+                // onBeforeChange={onBeforeChange}
                 onChange={handleChange}
                 value= {code}
                 className= "code-mirror-wrapper"
