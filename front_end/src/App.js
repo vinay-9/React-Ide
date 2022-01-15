@@ -9,7 +9,7 @@ import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownOutlined';
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import CodeBox from './CodeBox'
 import CodeBox2 from './CodeBox2'
-
+import Login from './login'
 
 export default function App() {
   useEffect(() => {
@@ -26,11 +26,11 @@ return (
          {/* <Route path="/search/:city">
          <Route path="/search">
             <WeatherContent/>
-         </Route>
+         </Route> */}
 
         <Route exact path="/login">
             <Login/>
-        </Route> */}
+        </Route>
     </Switch>
 </Router>
 

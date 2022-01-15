@@ -1,9 +1,5 @@
-h1{
-    margin-top: 5%;
-    font-size:220%;
-    margin-bottom: 0;
-}
-select{
+
+.select_js{
     align-items: flex-end;
     margin-left: 90%;
     font-size: large;
@@ -15,17 +11,20 @@ select{
     border-radius: 5px;
 
 }
-.navbar{
+.navbar_js{
     display: block;
     background-color: rgb(233, 255, 255);
     margin-top:2%
 }
-.contaier{
+.container_js{
     display: block;
-    align-items: center;    
-    width: 50%;
-    margin-right: 30%;
-    max-height: "   ";
+    align-items: center;
+    justify-content: center;    
+    width: 95%;
+    margin-right: 5%;
+    margin-left: 2.5%;
+    margin-top: -10%;
+    max-height: "  ";
     scroll-behavior: auto;
     height: 100% !important;
     overflow: hidden;
@@ -33,10 +32,11 @@ select{
     border-color: aquamarine;
     border-radius: 2px;
     padding : 10%;
+    font-size: medium;
 }
 
 
-img {
+.img {
     width: 120%;
     height: 120%;
     position: fixed;
@@ -45,7 +45,7 @@ img {
     margin-left: -15%;
     display: flex;
 }
-button{
+.button_js{
     height: 10%;
     background-color: rgb(0, 192, 80);
     color: aliceblue;
@@ -53,15 +53,16 @@ button{
     border: 1px;
     border-color:black;
     border-radius: 3px;
-    font-size: large;
+    font-size: 100%;
     display: flex;
     margin-top: 2px;
     width: 10%;
+    text-align:justify;
 
 }
 
 
-iframe{
+.iframe{
     border: 2px;
     border-style:groove;
     border-radius: 2px;
@@ -69,7 +70,7 @@ iframe{
     display: block;
 }
 
-.input{
+.input_js{
     width: 99%;
     min-height: 80px;
     display: block;
