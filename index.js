@@ -8,7 +8,7 @@ const {MongoClient}= require('mongodb')
 const bodyParser = require("body-parser");
 
 const {userModel, codeModel} = require ('./schema.js')
-  
+
 // Start server on PORT 5000
 PORT= process.env.PORT || 5000
 app.listen(process.env.PORT || 5000, () => {
@@ -20,23 +20,32 @@ app.use(bodyParser.json());
 
 const uri= "mongodb+srv://vinay:vinayMongodb@cluster0.gpac9.mongodb.net/test?retryWrites=true&w=majority"
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true});
+let session= null
 try {
     // Connect to the MongoDB's cluster
     client.connect().then((res)=> {
       console.log('connected to the client')
+      session = client.startSession();
       listDatabases(client);
     })
-    .catch(e=>console.log(e));
-   
+    .catch(e=>{console.log(e) 
+      session.endSession()
+    });
+      
 } catch (e) {
     console.error(e);
 } finally {
     client.close();
 }
 router.post('/api/login', async (req, res, next) => {
-  const result= await checkUser(client, {email: req.body.email, password: req.body.password})
-  console.log(result)
-  res.send(result);
+  try{
+    const result= await checkUser(client, {email: req.body.email, password: req.body.password})
+    console.log(result)
+    res.send(result);
+  }
+  catch(e){
+    res.send(e)
+  }
 });
 
 
@@ -55,8 +64,12 @@ router.post('/api/submit',async (req,res) => {
 });
 
 
-router.get('/api/getSubmissions', async (req, res, next) => {
-  const submissions= await findAllSubmissions(client, {id: req.id})
+router.get('/api/submit/', async (req, res) => {
+  console.log(req.body)
+  console.log(req.body.user_id)
+  console.log(req.params)
+  console.log(req.params.user_id)
+  const submissions= await findAllSubmissions(client, {user_id: req.body.user_id}, { session })
   res.send(submissions);
 }); 
     
@@ -104,7 +117,7 @@ async function createUser(client, user) {
 
 async function findAllSubmissions(client, user){
   //sort based on the latest submissions 
-  const result= await client.db("test").collection("codes").find({email: user.email}).sort({submitted_at: -1})
+  const result= await client.db("test").collection("codes").find({user_id: user.user_id}).sort({submitted_at: -1})
   if(result){
     // console.log("user exists", result)
     const array_res= await result.toArray();

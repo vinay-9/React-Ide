@@ -40,11 +40,12 @@ function CodeBox(props) {
     const inputProps = {
         step: 300,
       };
-    // React.useEffect(()=>{
-    //     if(is_submitted){
-    //         console.log("submitted")
-    //     }
-    // }, [is_submitted])
+
+    React.useEffect(()=>{
+        if(is_submitted){
+            console.log("submitted")
+        }
+    }, [is_submitted])
     const handleChange=(editor, data, value)=>{
         setcode(value)
         console.log(code)
@@ -69,7 +70,7 @@ function CodeBox(props) {
    
     const submitCode= (data)=>{
         console.log("submitting to mongoDb");
-        axios.post('/api/submit', {id: props.id, code: data.source_code,  output: data.stdout?data.stdout:data.status.desctiption, input: data.stdin, execution_time: data.time,  submitted_at: data.finished_at})
+        axios.post('/api/submit', {user_id: props.id, code: data.source_code,  output: data.stdout?data.stdout:data.status.desctiption, input: data.stdin, execution_time: data.time,  submitted_at: data.finished_at})
         .then(function (response) {
             console.log(response);
         })
@@ -79,32 +80,32 @@ function CodeBox(props) {
     }
     //executing the code 
     const executeCode =  async ()=>{
+       
         var options = {
-                method: 'POST',
-                url: 'https://judge0-ce.p.rapidapi.com/submissions',
-                params: {base64_encoded: 'false', wait: 'true', fields: '*'},
-                headers: {
-                    'content-type': 'application/json',
-                    //'x-rapidapi-key': '098ff97f16mshec4444d56e91a23p14d2edjsn79769e2abfde',
-                    'x-rapidapi-key': 'bd7cf329bemshae8e6053840605ep166442jsnc60488059d95',
-                    'x-rapidapi-host': 'judge0-ce.p.rapidapi.com'
-                },
-                data:JSON.stringify({
-                    source_code: code,
-                    stdin:input,
-                    language_id: mode,
-                  }),
-        };
-        await axios.request(options).then(function (response) {
-            console.log(response.data.token);
-            settoken(response.data.token)
-            setmode(response.data.language_id)
-            console.log(mode)
-        }).catch(function (error) {
-            console.log("error from submission")
-            console.error(error);
-        });
-
+            method: 'POST',
+            url: 'https://judge0-ce.p.rapidapi.com/submissions',
+            params: {base64_encoded: 'false', wait: 'true', fields: '*'},
+            headers: {
+                'content-type': 'application/json',
+                //'x-rapidapi-key': '098ff97f16mshec4444d56e91a23p14d2edjsn79769e2abfde',
+                'x-rapidapi-key': 'bd7cf329bemshae8e6053840605ep166442jsnc60488059d95',
+                'x-rapidapi-host': 'judge0-ce.p.rapidapi.com'
+            },
+            data:JSON.stringify({
+                source_code: code,
+                stdin:input,
+                language_id: mode,
+              }),
+    };
+    await axios.request(options).then(function (response) {
+        console.log(response.data.token);
+        settoken(response.data.token)
+        setmode(response.data.language_id)
+        console.log(mode)
+    }).catch(function (error) {
+        console.log("error from submission")
+        console.error(error);
+    });
 
         //getting the results
         var getoptions = {
