@@ -47,6 +47,7 @@ function Login(props) {
         })
         .catch(function (error) {
             console.log(error);
+            setError("This user already exists or osme error in login.. try again later")
         });
     }
 
