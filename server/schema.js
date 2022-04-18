@@ -12,7 +12,7 @@ var codeSchema = new Schema({
     output: { type: String,  },
     execution_time: {type: Date},
     submitted_at: { type: Date},
-    user_id: { type: String, default: '1'},
+    user_id: { type: String},
     
 
 
