@@ -6,7 +6,7 @@ import React, { useState, useEffect, ReactDOM } from 'react';
 import { Form, TextArea } from 'semantic-ui-react'
 import {Controlled as ControlledEditor} from 'react-codemirror2'
 import {UnControlled as CodeMirror} from 'react-codemirror2'
-import { TextField } from '@material-ui/core';
+import { TextField } from '@mui/material';
 import Submissions from './submissions'
 import back from './background.png'
 import { NavLink } from "react-router-dom";
